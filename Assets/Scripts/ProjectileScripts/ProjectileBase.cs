@@ -7,6 +7,6 @@ public class ProjectileBase : MonoBehaviour
 
     public GameObject projectile;
 
-    [Range(1f,0.1f)]
+    [Range(10f,0.1f)]
     public float firerate;
 }

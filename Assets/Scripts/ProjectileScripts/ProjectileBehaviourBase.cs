@@ -12,10 +12,11 @@ public class ProjectileBehaviourBase : MonoBehaviour
     public int projectileDamage;
     [Range(0f,10f)]
     public float despawnTime;
+    public string tag;
 
-    private void OnCollisionEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (col != null)
+        if (collision.gameObject.tag == tag)
         {
             Destroy(gameObject);
         }
