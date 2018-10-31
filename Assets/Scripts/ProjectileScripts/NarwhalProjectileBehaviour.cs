@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class NarwhalProjectileBehaviour : ProjectileBehaviourBase
 {
-	void FixedUpdate ()
+    private void Start()
     {
-		transform.position = new Vector3(transform.position.x - projectileSpeed, transform.position.y);
+        projectileSpeed = 0.25f;
+    }
+    void FixedUpdate ()
+    {
+		transform.position = new Vector2(transform.position.x - projectileSpeed, transform.position.y);
 	}
 }

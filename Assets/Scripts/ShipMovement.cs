@@ -9,8 +9,12 @@ public class ShipMovement : MonoBehaviour
 
     private float xMovement;
     private float yMovement;
+
+    [Header("Speed")]
     [Range(0f,20f)]
-    public float speed;
+    public float xSpeed;
+    [Range(0f,20f)]
+    public float ySpeed;
 
 	void Start () 
     {
@@ -20,14 +24,12 @@ public class ShipMovement : MonoBehaviour
 	
 	void Update ()
     {
+        xMovement = Input.GetAxis("Horizontal") * xSpeed;
+        yMovement = Input.GetAxis("Vertical") * ySpeed;
 	}
 
     void FixedUpdate ()
     {
-        xMovement = Input.GetAxis("Horizontal");
-        yMovement = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(xMovement, yMovement);
-
-        rb.velocity = (movement * speed);
+        rb.velocity = new Vector2(xMovement, yMovement);
     }
 }
