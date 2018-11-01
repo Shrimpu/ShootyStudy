@@ -28,7 +28,9 @@ public class Pause : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!gameCleared)
+                {
                     PauseGame();
+                }
             }
             if (Input.GetKeyDown(KeyCode.R) && isPaused)
                 Restart();
@@ -43,6 +45,7 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenuUI.SetActive(true);
+            Cursor.visible = true;
             isPaused = true;
         }
 
@@ -50,6 +53,7 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseMenuUI.SetActive(false);
+            Cursor.visible = false;
             isPaused = false;
         }
     }
@@ -58,6 +62,7 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
         Time.timeScale = 1;
+        Cursor.visible = true;
     }
 
     public void Quit()
@@ -109,6 +114,7 @@ public class Pause : MonoBehaviour
         startMenuUI.SetActive(false);
         Time.timeScale = 1;
         gameStarted = true;
+        Cursor.visible = false;
     }
 
     public void GameCleared()
@@ -116,5 +122,6 @@ public class Pause : MonoBehaviour
         clearedGameUI.SetActive(true);
         gameCleared = true;
         isPaused = true;
+        Cursor.visible = true;
     }
 }
