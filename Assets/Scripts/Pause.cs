@@ -8,9 +8,11 @@ public class Pause : MonoBehaviour
     private bool isPaused;
     private bool gameStarted;
     public bool gameOver;
+    public bool gameCleared;
 
     public GameObject pauseMenuUI;
     public GameObject startMenuUI;
+    public GameObject clearedGameUI;
     private GameObject Player;
     private Health healthScript;
 
@@ -25,8 +27,11 @@ public class Pause : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                PauseGame();
+                if (!gameCleared)
+                    PauseGame();
             }
+            if (Input.GetKeyDown(KeyCode.R) && isPaused)
+                Restart();
         }
         if (gameOver)
             PauseGame();
@@ -62,15 +67,20 @@ public class Pause : MonoBehaviour
 
     public void Easy()
     {
-        SetDifficulty(10);
+        SetDifficulty(25);
     }
 
     public void normal()
     {
-        SetDifficulty(3);
+        SetDifficulty(10);
     }
 
     public void Hard()
+    {
+        SetDifficulty(3);
+    }
+
+    public void ChallengeMode()
     {
         SetDifficulty(1);
     }
@@ -84,7 +94,7 @@ public class Pause : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         healthScript = Player.GetComponent<Health>();
-        healthScript.SetHealthBar(amount);
+        healthScript.SetHealthBar(amount, false);
 
         if (amount == 99)
             healthScript.invincible = true;
@@ -99,5 +109,12 @@ public class Pause : MonoBehaviour
         startMenuUI.SetActive(false);
         Time.timeScale = 1;
         gameStarted = true;
+    }
+
+    public void GameCleared()
+    {
+        clearedGameUI.SetActive(true);
+        gameCleared = true;
+        isPaused = true;
     }
 }

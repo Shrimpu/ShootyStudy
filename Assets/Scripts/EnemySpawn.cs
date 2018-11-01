@@ -13,7 +13,8 @@ public class EnemySpawn : MonoBehaviour
     private float spawnBreak;
 
     private bool spawnSpeedChange;
-    private bool boss1Killed;
+    private bool boss1Spawned;
+    private bool boss2Spawned;
     private bool killMe;
 
     private Vector2 spawnPoint;
@@ -57,17 +58,17 @@ public class EnemySpawn : MonoBehaviour
                 }
                 Instantiate(EnemyList[Random.Range(1, 3)], spawnPoint, Quaternion.identity);
             }
-            else if (!boss1Killed)
+            else if (!boss1Spawned)
             {
                 enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
                 if (enemiesOnScreen.Length == 0)
                 {
                     Instantiate(BossList[0], spawnPoint, Quaternion.identity);
                     spawnBreak = score.score;
-                    boss1Killed = true;
+                    boss1Spawned = true;
                 }
             }
-            else if (score.score > spawnBreak)
+            else if (score.score < 7000 && spawnBreak != score.score)
             {
                 if (spawnSpeedChange)
                 {
@@ -76,6 +77,28 @@ public class EnemySpawn : MonoBehaviour
                 }
                 Instantiate(EnemyList[Random.Range(2, 4)], spawnPoint, Quaternion.identity);
             }
+            else if (!boss2Spawned)
+            {
+                enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
+                if (enemiesOnScreen.Length == 0)
+                {
+                    Instantiate(BossList[1], spawnPoint, Quaternion.identity);
+                    spawnBreak = score.score;
+                    boss2Spawned = true;
+                }
+            }
+            else
+            {
+                enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
+                if (enemiesOnScreen.Length == 0)
+                    GameWon();
+            }
         }
+    }
+
+    private void GameWon()
+    {
+        Pause won = GameController.GetComponent<Pause>();
+        won.GameCleared();
     }
 }

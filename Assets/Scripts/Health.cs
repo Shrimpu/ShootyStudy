@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     Color hurtColor = new Color(255, 0, 0);
     private float colorOverwriteTime = 0.1f;
     private Coroutine hurt;
+    public bool flashesRed = true;
     public GameObject drop;
 
     public AudioClip inPain;
@@ -18,11 +19,12 @@ public class Health : MonoBehaviour
     public GameObject animeDeath;
 
     [Header("Health")]
-    [Range(1, 250)]
+    [Range(1, 1000)]
     public int health;
     public bool invincible = false;
-    [Header("Damage on contact with")]
     public bool enemy;
+    public bool boss;
+    [Header("Damage on contact with")]
     private string targetTag;
     public float contactDamageRate;
     private float nextDamageInstance;
@@ -30,6 +32,11 @@ public class Health : MonoBehaviour
     public int scoreOnDeath;
 
     private void Start()
+    {
+        GetShit();
+    }
+
+    protected virtual void GetShit()
     {
         if (enemy)
         {
@@ -43,6 +50,13 @@ public class Health : MonoBehaviour
         spriteR = GetComponent<SpriteRenderer>();
         AudioPain = AddAudio(inPain, false, false, 0.1f);
         AudioDeath = AddAudio(deathClip, false, false, 1f);
+
+        if (boss)
+        {
+            GameObject gc = GameObject.FindGameObjectWithTag("GameController");
+            HealthBar healthBar = gc.GetComponent<HealthBar>();
+            healthBar.SetBossHealth(gameObject.name);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,7 +76,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int bigHurt)
+    public virtual void TakeDamage(int bigHurt)
     {
         if (!invincible)
         {
@@ -82,9 +96,12 @@ public class Health : MonoBehaviour
             }
             else
             {
-                if (hurt != null)
-                    StopCoroutine(hurt);
-                hurt = StartCoroutine(ColorChange());
+                if (flashesRed)
+                {
+                    if (hurt != null)
+                        StopCoroutine(hurt);
+                    hurt = StartCoroutine(ColorChange());
+                }
 
                 if (AudioPain != null)
                     AudioPain.Play(0);
@@ -94,7 +111,13 @@ public class Health : MonoBehaviour
             {
                 GameObject gc = GameObject.FindGameObjectWithTag("GameController");
                 HealthBar healthBar = gc.GetComponent<HealthBar>();
-                healthBar.HealthBarCalc(bigHurt);
+                healthBar.HealthBarCalc(bigHurt, false);
+            }
+            else if (boss)
+            {
+                GameObject gc = GameObject.FindGameObjectWithTag("GameController");
+                HealthBar healthBar = gc.GetComponent<HealthBar>();
+                healthBar.HealthBarCalc(bigHurt, true);
             }
         }
     }
@@ -161,12 +184,21 @@ public class Health : MonoBehaviour
         return newAudio;
     }
 
-    public void SetHealthBar(int amount)
+    public void SetHealthBar(int amount, bool boss)
     {
         GameObject gc = GameObject.FindGameObjectWithTag("GameController");
         HealthBar healthBar = gc.GetComponent<HealthBar>();
-        healthBar.fullHealth = amount;
-        healthBar.curHealth = amount;
-        healthBar.HealthBarCalc(0);
+
+        if (!boss)
+        {
+            healthBar.fullHealth = amount;
+            healthBar.curHealth = amount;
+        }
+        else
+        {
+            healthBar.bossFullHealth = amount;
+            healthBar.bossCurHealth = amount;
+        }
+        healthBar.HealthBarCalc(0, boss);
     }
 }

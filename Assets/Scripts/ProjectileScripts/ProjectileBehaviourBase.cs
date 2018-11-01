@@ -26,7 +26,7 @@ public class ProjectileBehaviourBase : MonoBehaviour
                 damage.TakeDamage(projectileDamage);
             }
         }
-        Destroy(gameObject);
+        DestroyProjectile(collision);
     }
 
     void Update()
@@ -36,5 +36,10 @@ public class ProjectileBehaviourBase : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    protected virtual void DestroyProjectile(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 }

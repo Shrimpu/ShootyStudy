@@ -92,6 +92,10 @@ MonoBehaviour:
   projectileDamage: 1
   despawnTime: 1.67
   targetTag: 
+  blood:
+  - {fileID: 1336723139265578, guid: cd4cb455ae864b84f954a1f574fbdcae, type: 2}
+  - {fileID: 1661801230940310, guid: e26a6d1e91a567a40864fd4835b79308, type: 2}
+  - {fileID: 1069548739075088, guid: ff836f26e58a8d9429fed8bb41014fa5, type: 2}
 --- !u!212 &212400330465816162
 SpriteRenderer:
   m_ObjectHideFlags: 1

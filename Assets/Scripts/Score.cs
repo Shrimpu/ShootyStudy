@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
 {
     public int score;
     public Text scoreText;
+    public Text finalScore;
 
     private void Start()
     {
@@ -23,5 +24,6 @@ public class Score : MonoBehaviour
     void SetScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+        finalScore.text = "You have won!!!\nYour final score is:\nScore: " + score.ToString();
     }
 }
