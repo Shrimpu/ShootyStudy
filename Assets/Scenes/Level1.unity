@@ -3471,7 +3471,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4886618238349658, guid: 045ab5fba9d918449bee3c8306f09877, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4886618238349658, guid: 045ab5fba9d918449bee3c8306f09877, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3506,7 +3506,7 @@ Prefab:
     - target: {fileID: 212287072061005962, guid: 045ab5fba9d918449bee3c8306f09877,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114793020202110000, guid: 045ab5fba9d918449bee3c8306f09877,
         type: 2}
@@ -3517,6 +3517,11 @@ Prefab:
         type: 2}
       propertyPath: enemy
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212731153500828878, guid: 045ab5fba9d918449bee3c8306f09877,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045ab5fba9d918449bee3c8306f09877, type: 2}
