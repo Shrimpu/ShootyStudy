@@ -153,6 +153,8 @@ public class Health : MonoBehaviour
         {
             AudioDeath.Play(0);
             spriteR.enabled = false;
+            if (gameObject.GetComponent<EnemyShoot>() != null)
+                gameObject.GetComponent<EnemyShoot>().stopShooting = true;
             if (drop != null)
                 Instantiate(drop, transform.position, Quaternion.identity);
 
@@ -171,7 +173,6 @@ public class Health : MonoBehaviour
         }
 
         invincible = true;
-
     }
 
     private AudioSource AddAudio(AudioClip clip, bool loop, bool playOnAwake, float volume)

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    public Text bossNameText;
     public Slider healthBar;
     public Slider bossHealthBar;
     public float fullHealth;
@@ -14,6 +15,9 @@ public class HealthBar : MonoBehaviour
 
     private Health bossHealth;
     private SharkHealth bossHealthS;
+
+    private string pengu = "Gun Pengu";
+    private string shark = "Megalodon";
 
     public void HealthBarCalc(int damage, bool boss)
     {
@@ -30,6 +34,8 @@ public class HealthBar : MonoBehaviour
             bossCurHealth = Mathf.Clamp(bossCurHealth, 0, bossFullHealth);
 
             bossHealthBar.value = bossCurHealth / bossFullHealth;
+            if (bossHealthBar.value <= 0)
+                bossNameText.text = "";
         }
     }
 
@@ -46,5 +52,15 @@ public class HealthBar : MonoBehaviour
             bossHealthS = boss.GetComponent<SharkHealth>();
             bossHealthS.SetHealthBar(bossHealthS.health, true);
         }
+        SetBossName(bossName);
+    }
+
+    public void SetBossName(string bossName)
+    {
+        if (bossName == "PenguBoss(Clone)")
+            bossName = pengu;
+        else if (bossName == "Shark(Clone)")
+            bossName = shark;
+        bossNameText.text = (bossName);
     }
 }

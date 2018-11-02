@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212216968730302778}
   - component: {fileID: 50761574862767280}
   - component: {fileID: 114084067695226724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shark_Blood_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584fdf840cc55ee41b8dc621a56a66ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  despawnTime: 30
 --- !u!212 &212216968730302778
 SpriteRenderer:
   m_ObjectHideFlags: 1

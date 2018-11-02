@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class EnemyShoot : ProjectileBase
 {
-	private float nextShot;
+    private float nextShot;
     public Transform[] projectileSpawn;
 
-	void FixedUpdate () 
+    public bool stopShooting;
+
+    void FixedUpdate()
     {
-		if (nextShot <= firerate)
+        if (!stopShooting)
         {
-            nextShot += Time.deltaTime;
+            if (nextShot <= firerate)
+            {
+                nextShot += Time.deltaTime;
+            }
+            if (nextShot >= firerate)
+            {
+                ShootingTime();
+                nextShot = 0;
+            }
         }
-        if (nextShot >= firerate)
-        {
-            ShootingTime();
-            nextShot = 0;
-        }
-	}
+    }
 
     protected virtual void ShootingTime()
     {
