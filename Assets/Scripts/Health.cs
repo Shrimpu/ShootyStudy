@@ -34,6 +34,55 @@ public class Health : MonoBehaviour
     private void Start()
     {
         GetShit();
+        SetDifficulty();
+    }
+
+    public void SetDifficulty()
+    {
+        if (gameObject.name == "Narwhal(Clone)")
+        {
+            SetHealth(2, 3, 5);
+        }
+        else if (gameObject.name == "Swordfish(Clone)")
+        {
+            SetHealth(1, 2, 3);
+        }
+        else if (gameObject.name == "Lion Paw Clam(Clone)")
+        {
+            SetHealth(5, 10, 15);
+        }
+        else if (gameObject.name == "Alve FiskSpel(Clone)")
+        {
+            SetHealth(5, 10, 15);
+        }
+        else if (gameObject.name == "PenguBoss(Clone)")
+        {
+            SetHealth(100, 100, 150);
+        }
+        else if (gameObject.name == "Shark(Clone)")
+        {
+            SetHealth(1000, 1000, 1000);
+        }
+
+        if (boss)
+        {
+            GameObject gc = GameObject.FindGameObjectWithTag("GameController");
+            HealthBar healthBar = gc.GetComponent<HealthBar>();
+            healthBar.SetBossHealth(gameObject.name);
+        }
+    }
+
+    private void SetHealth(int e, int n, int h)
+    {
+        GameObject gc = GameObject.FindGameObjectWithTag("GameController");
+        string difficulty = gc.GetComponent<Pause>().difficulty;
+
+        if (difficulty == "Easy")
+            health = e;
+        else if (difficulty == "Normal")
+            health = n;
+        else if (difficulty == "Hard")
+            health = h;
     }
 
     protected virtual void GetShit()
@@ -50,13 +99,6 @@ public class Health : MonoBehaviour
         spriteR = GetComponent<SpriteRenderer>();
         AudioPain = AddAudio(inPain, false, false, 0.1f);
         AudioDeath = AddAudio(deathClip, false, false, 1f);
-
-        if (boss)
-        {
-            GameObject gc = GameObject.FindGameObjectWithTag("GameController");
-            HealthBar healthBar = gc.GetComponent<HealthBar>();
-            healthBar.SetBossHealth(gameObject.name);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

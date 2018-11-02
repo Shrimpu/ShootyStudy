@@ -8,6 +8,7 @@ public class ChoppyMovement : EnemyBase
     private float toggle;
     private bool moving = false;
     private bool justSpawned = true;
+    private bool doOnce;
 
     private void Start()
     {
@@ -31,9 +32,17 @@ public class ChoppyMovement : EnemyBase
         }
         else
         {
+            if (!doOnce)
+            {
+                speed *= 2;
+                doOnce = true;
+            }
             base.MovingAbout();
             if (toggle + (moveTime * 2) < Time.time)
+            {
                 justSpawned = false;
+                speed /= 2;
+            }
         }
     }
 }

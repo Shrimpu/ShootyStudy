@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class Pause : MonoBehaviour
     private bool gameStarted;
     public bool gameOver;
     public bool gameCleared;
+    public string difficulty;
 
     public GameObject pauseMenuUI;
     public GameObject startMenuUI;
     public GameObject clearedGameUI;
     private GameObject Player;
     private Health healthScript;
+    public Text diedText;
 
     private void Start()
     {
@@ -56,6 +59,9 @@ public class Pause : MonoBehaviour
             Cursor.visible = false;
             isPaused = false;
         }
+
+        if (gameOver)
+            diedText.text = "You Died";
     }
 
     public void Restart()
@@ -72,27 +78,32 @@ public class Pause : MonoBehaviour
 
     public void Easy()
     {
-        SetDifficulty(25);
+        SetDifficulty(15);
+        difficulty = "Easy";
     }
 
-    public void normal()
+    public void Normal()
     {
         SetDifficulty(10);
+        difficulty = "Normal";
     }
 
     public void Hard()
     {
         SetDifficulty(3);
+        difficulty = "Hard";
     }
 
     public void ChallengeMode()
     {
         SetDifficulty(1);
+        difficulty = "Hard";
     }
 
     public void ImTrash()
     {
         SetDifficulty(99);
+        difficulty = "Easy";
     }
 
     private void SetDifficulty(int amount)
