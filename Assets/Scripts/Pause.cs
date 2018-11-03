@@ -78,32 +78,32 @@ public class Pause : MonoBehaviour
 
     public void Easy()
     {
-        SetDifficulty(15);
         difficulty = "Easy";
+        SetDifficulty(15);
     }
 
     public void Normal()
     {
-        SetDifficulty(10);
         difficulty = "Normal";
+        SetDifficulty(10);
     }
 
     public void Hard()
     {
-        SetDifficulty(3);
         difficulty = "Hard";
+        SetDifficulty(3);
     }
 
     public void ChallengeMode()
     {
-        SetDifficulty(1);
         difficulty = "Hard";
+        SetDifficulty(1);
     }
 
     public void ImTrash()
     {
-        SetDifficulty(99);
         difficulty = "Easy";
+        SetDifficulty(99);
     }
 
     private void SetDifficulty(int amount)
@@ -116,6 +116,13 @@ public class Pause : MonoBehaviour
             healthScript.invincible = true;
         else
             healthScript.health = amount;
+
+        if (difficulty == "Easy")
+            GetComponent<Score>().scoreMult = 2;
+        else if (difficulty == "Normal")
+            GetComponent<Score>().scoreMult = 3;
+        else if (difficulty == "Hard")
+            GetComponent<Score>().scoreMult = 4;
 
         StartGame();
     }

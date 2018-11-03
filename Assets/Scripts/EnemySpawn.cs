@@ -45,11 +45,11 @@ public class EnemySpawn : MonoBehaviour
             random = Random.Range(randRange1, randRange2);
             spawnPoint = new Vector2(transform.position.x, random);
 
-            if (score.score < 500)
+            if (score.rawScore < 500)
                 Instantiate(EnemyList[0], spawnPoint, Quaternion.identity);
-            else if (score.score < 1000)
+            else if (score.rawScore < 1000)
                 Instantiate(EnemyList[Random.Range(0, 2)], spawnPoint, Quaternion.identity);
-            else if (score.score < 2000)
+            else if (score.rawScore < 2000)
             {
                 if (!spawnSpeedChange)
                 {
@@ -64,11 +64,11 @@ public class EnemySpawn : MonoBehaviour
                 if (enemiesOnScreen.Length == 0)
                 {
                     Instantiate(BossList[0], spawnPoint, Quaternion.identity);
-                    spawnBreak = score.score;
+                    spawnBreak = score.rawScore;
                     boss1Spawned = true;
                 }
             }
-            else if (score.score < 7000 && spawnBreak != score.score)
+            else if (score.rawScore < 7000 && spawnBreak != score.rawScore)
             {
                 if (spawnSpeedChange)
                 {
@@ -83,7 +83,7 @@ public class EnemySpawn : MonoBehaviour
                 if (enemiesOnScreen.Length == 0)
                 {
                     Instantiate(BossList[1], spawnPoint, Quaternion.identity);
-                    spawnBreak = score.score;
+                    spawnBreak = score.rawScore;
                     boss2Spawned = true;
                 }
             }

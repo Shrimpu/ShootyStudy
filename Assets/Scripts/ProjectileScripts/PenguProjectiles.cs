@@ -5,6 +5,7 @@ using UnityEngine;
 public class PenguProjectiles : ProjectileBehaviourBase
 {
     private bool atDestination;
+    public GameObject Expulosion;
 
     private Vector3 target;
 
@@ -29,7 +30,7 @@ public class PenguProjectiles : ProjectileBehaviourBase
             if (transform.position == target)
             {
                 atDestination = true;
-                //play animation
+                Instantiate(Expulosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

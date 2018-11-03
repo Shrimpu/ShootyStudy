@@ -92,6 +92,7 @@ MonoBehaviour:
   projectileDamage: 2
   despawnTime: 1.94
   targetTag: Player
+  Expulosion: {fileID: 1793052331568188, guid: bfe78bad0794e1e40a5d8d104e360d55, type: 2}
 --- !u!212 &212368201441832160
 SpriteRenderer:
   m_ObjectHideFlags: 1

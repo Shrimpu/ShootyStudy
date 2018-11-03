@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
+    public int rawScore;
     public int score;
+    public int scoreMult;
     public Text scoreText;
     public Text finalScore;
 
     private void Start()
     {
-        score = 0;
+        rawScore = 0;
     }
 
     public void AddScore(int add)
     {
-        score += add;
+        rawScore += add;
+        score += add * scoreMult;
 
         SetScoreText();
     }
