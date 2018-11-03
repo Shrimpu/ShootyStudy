@@ -7,7 +7,8 @@ public class Score : MonoBehaviour
 {
     public int rawScore;
     public int score;
-    public int scoreMult;
+    public int scoreMult; // this is here so that the different difficulties give different amount of score.
+
     public Text scoreText;
     public Text finalScore;
 
@@ -24,7 +25,7 @@ public class Score : MonoBehaviour
         SetScoreText();
     }
 
-    void SetScoreText()
+    void SetScoreText() // score means NOTHING in my game
     {
         scoreText.text = "Score: " + score.ToString();
         finalScore.text = "You have won!!!\nYour final score is:\nScore: " + score.ToString();

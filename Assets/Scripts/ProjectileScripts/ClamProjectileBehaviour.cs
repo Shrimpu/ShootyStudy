@@ -21,7 +21,7 @@ public class ClamProjectileBehaviour : ProjectileBehaviourBase
         Move();
     }
 
-    private void CalculateDirection()
+    private void CalculateDirection() // this is the code when someone gives up
     {
         if (stationaryX)
             direction.x = 0;

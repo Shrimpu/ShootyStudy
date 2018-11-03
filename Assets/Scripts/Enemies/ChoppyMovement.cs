@@ -30,7 +30,7 @@ public class ChoppyMovement : EnemyBase
                 base.MovingAbout();
             }
         }
-        else
+        else // this makes the object move into the screen before proceeding with its movement pattern
         {
             if (!doOnce)
             {

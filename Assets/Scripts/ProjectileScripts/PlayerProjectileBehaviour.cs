@@ -22,7 +22,7 @@ public class PlayerProjectileBehaviour : ProjectileBehaviourBase
     protected override void DestroyProjectile(Collision2D collision)
     {
         Destroy(gameObject);
-        if (collision.gameObject.name == "Shark" || collision.gameObject.name == "Shark(Clone)")
+        if (collision.gameObject.name == "Shark" || collision.gameObject.name == "Shark(Clone)") // only shark bleeds, everyone knows that
         {
             if (Random.Range(0, 5) == 1)
             {

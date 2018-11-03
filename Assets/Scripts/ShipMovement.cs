@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ShipMovement : MonoBehaviour
+public class ShipMovement : MonoBehaviour // this is a very advanced movement script.
 {
     Rigidbody2D rb;
 

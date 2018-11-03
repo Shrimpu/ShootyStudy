@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour // this takes care of all my health bars. all two of them
 {
     public Text bossNameText;
     public Slider healthBar;

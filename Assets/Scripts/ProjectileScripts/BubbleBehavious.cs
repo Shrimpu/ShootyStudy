@@ -6,7 +6,7 @@ public class BubbleBehavious : ProjectileBehaviourBase
 {
     private Rigidbody2D rb;
     [Range(0.001f, 0.1f)]
-    public float nutForce;
+    public float nutForce; // Don't pay to much attention to the name
 
     private Vector3 target;
     private Vector3 targetOffset;
@@ -16,7 +16,7 @@ public class BubbleBehavious : ProjectileBehaviourBase
         Player = GameObject.FindGameObjectWithTag("Player");
         target = Player.GetComponent<Transform>().position;
 
-        ExtraFeatures();
+        ExtraFeatures(); // for when you need more than one void Start. idk
     }
 
     private void FixedUpdate()

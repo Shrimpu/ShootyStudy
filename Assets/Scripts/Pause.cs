@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Pause : MonoBehaviour
+public class Pause : MonoBehaviour // this is a menu and I somehow made this retarded.
 {
     private bool isPaused;
     private bool gameStarted;
@@ -48,7 +48,7 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenuUI.SetActive(true);
-            Cursor.visible = true;
+            Cursor.visible = true; // with all these Cursor things I followed the philosophy of shoving them down everywhere and not thinking. feel free to tell me wich are redundant.
             isPaused = true;
         }
 
@@ -66,7 +66,7 @@ public class Pause : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1"); // level1, how ambitious
         Time.timeScale = 1;
         Cursor.visible = true;
     }
@@ -106,7 +106,7 @@ public class Pause : MonoBehaviour
         SetDifficulty(99);
     }
 
-    private void SetDifficulty(int amount)
+    private void SetDifficulty(int amount) // this code makes me want to cry. read at own risk.
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         healthScript = Player.GetComponent<Health>();
@@ -142,4 +142,4 @@ public class Pause : MonoBehaviour
         isPaused = true;
         Cursor.visible = true;
     }
-}
+} // by this point im sure that you've noticed that my placement of functions have no rime or reason. I hope to improve this with my next project.

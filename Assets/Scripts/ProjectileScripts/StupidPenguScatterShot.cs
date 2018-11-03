@@ -10,7 +10,7 @@ public class StupidPenguScatterShot : ProjectileBehaviourBase
     private Rigidbody2D rb;
     private Vector2 direction;
 
-    private void Start()
+    private void Start() // sad
     {
         projectileSpeed = 5f;
 

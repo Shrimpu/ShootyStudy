@@ -10,6 +10,6 @@ public class NarwhalProjectileBehaviour : ProjectileBehaviourBase
     }
     void FixedUpdate ()
     {
-		transform.position = new Vector2(transform.position.x - projectileSpeed, transform.position.y);
+		transform.position = new Vector2(transform.position.x - projectileSpeed, transform.position.y); // genius
 	}
 }

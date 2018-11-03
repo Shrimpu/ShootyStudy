@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject GameController;
+    //this place is hell. you may want to turn back now while your brain is still in a solid state.
+
+    public GameObject GameController; // I can't defend this mess of variables. I just kept adding more and now its a mess.
     private GameObject[] enemiesOnScreen;
     private Score score;
     [Range(0.1f, 10f)]
@@ -40,16 +42,16 @@ public class EnemySpawn : MonoBehaviour
     {
         if (Time.time > nextSpawn)
         {
-            nextSpawn = Time.time + spawnRate;
+            nextSpawn = Time.time + spawnRate; // basic timer
 
-            random = Random.Range(randRange1, randRange2);
-            spawnPoint = new Vector2(transform.position.x, random);
+            random = Random.Range(randRange1, randRange2); // this is for the y position spawn. im so sorry
+            spawnPoint = new Vector2(transform.position.x, random); // this should've been its own function. that way the fat bosses doesn't spawn inside the damn screen.
 
-            if (score.rawScore < 500)
-                Instantiate(EnemyList[0], spawnPoint, Quaternion.identity);
+            if (score.rawScore < 500) // rawScore were originally score so yeah. the 500 could've been a 5 and a lot neater. I just can't bother changing it. it works and as long as i don't touch it, it keeps working.
+                Instantiate(EnemyList[0], spawnPoint, Quaternion.identity); // this code is hardcore ripped. I have no clue what Quaternion.Identity is.
             else if (score.rawScore < 1000)
                 Instantiate(EnemyList[Random.Range(0, 2)], spawnPoint, Quaternion.identity);
-            else if (score.rawScore < 2000)
+            else if (score.rawScore < 2000) // all of this with the rawScore is sorta the level.
             {
                 if (!spawnSpeedChange)
                 {
@@ -61,10 +63,10 @@ public class EnemySpawn : MonoBehaviour
             else if (!boss1Spawned)
             {
                 enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
-                if (enemiesOnScreen.Length == 0)
+                if (enemiesOnScreen.Length == 0) // this sure is neat. I legitimately like this.
                 {
                     Instantiate(BossList[0], spawnPoint, Quaternion.identity);
-                    spawnBreak = score.rawScore;
+                    spawnBreak = score.rawScore; // this is confusing. sorry
                     boss1Spawned = true;
                 }
             }

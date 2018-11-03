@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestroyAfterAnim : MonoBehaviour
 {
-    private float delay = 0;
     public AudioClip sound;
 
 	void Start ()
@@ -14,6 +13,6 @@ public class DestroyAfterAnim : MonoBehaviour
             gameObject.AddComponent<AudioSource>().clip = sound;
             gameObject.GetComponent<AudioSource>().Play(0);
         }
-        Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay);
+        Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 }

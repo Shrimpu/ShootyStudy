@@ -18,7 +18,7 @@ public class EnemyBase : MonoBehaviour
 
 	private void FixedUpdate () 
     {
-        MovingAbout();
+        MovingAbout(); // this makes different movement patterns so much easier
 	}
 
     protected virtual void MovingAbout()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class Upgrade1 : MonoBehaviour
+public class Upgrade1 : MonoBehaviour // wrote this so it would be easy to inherit (there are no other upgrades).
 {
     private PlayerShoot Player;
 

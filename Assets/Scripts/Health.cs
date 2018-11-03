@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour // stay clear of this one if you wish to avoid PTSD
 {
-    private SpriteRenderer spriteR;
+    private SpriteRenderer spriteR; // these variables are just everywhere. you can't find anything in this code withouth ctrl + f
     Color hurtColor = new Color(255, 0, 0);
     private float colorOverwriteTime = 0.1f;
     private Coroutine hurt;
@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public GameObject drop;
 
     public AudioClip inPain;
-    public AudioClip deathClip;
+    public AudioClip deathClip; // i made this sound by crushing an egg in my hand.
 
     private AudioSource AudioPain;
     private AudioSource AudioDeath;
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        GetShit();
+        GetShit(); // excuse my profanity
         SetDifficulty();
     }
 
@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
     {
         if (gameObject.name == "Narwhal(Clone)")
         {
-            SetHealth(2, 3, 5);
+            SetHealth(2, 3, 5); // I like this. 2 = hp for Easy, 3 = hp for Normal, 5 = hp for Hard
         }
         else if (gameObject.name == "Swordfish(Clone)")
         {
@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
         {
             SetHealth(5, 10, 15);
         }
-        else if (gameObject.name == "Alve FiskSpel(Clone)")
+        else if (gameObject.name == "Alve FiskSpel(Clone)") // enemy made by my cousin Alve
         {
             SetHealth(5, 10, 15);
         }
@@ -68,11 +68,11 @@ public class Health : MonoBehaviour
         {
             GameObject gc = GameObject.FindGameObjectWithTag("GameController");
             HealthBar healthBar = gc.GetComponent<HealthBar>();
-            healthBar.SetBossHealth(gameObject.name);
+            healthBar.SetBossHealth(gameObject.name); // gives name to something. this code is so tangled its hard to tell.
         }
     }
 
-    private void SetHealth(int e, int n, int h)
+    private void SetHealth(int e, int n, int h) // e = easy, etc.
     {
         GameObject gc = GameObject.FindGameObjectWithTag("GameController");
         string difficulty = gc.GetComponent<Pause>().difficulty;
@@ -87,23 +87,23 @@ public class Health : MonoBehaviour
 
     protected virtual void GetShit()
     {
-        if (enemy)
+        if (enemy) // this is very confusing
         {
-            targetTag = "PlayerProjectile";
+            targetTag = "PlayerProjectile"; // this means the object is an enemy
         }
         else
         {
-            targetTag = "Enemy";
+            targetTag = "Enemy"; // not an enemy.
         }
 
         spriteR = GetComponent<SpriteRenderer>();
-        AudioPain = AddAudio(inPain, false, false, 0.1f);
+        AudioPain = AddAudio(inPain, false, false, 0.1f); // this code is most definetly not ripped from somewhere else.
         AudioDeath = AddAudio(deathClip, false, false, 1f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (targetTag == "PlayerProjectile" && collision.gameObject.tag == targetTag)
+        if (targetTag == "PlayerProjectile" && collision.gameObject.tag == targetTag) // im sorry what?
         {
             TakeDamage(1);
         }
@@ -111,30 +111,30 @@ public class Health : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == targetTag && nextDamageInstance < Time.time)
+        if (collision.gameObject.tag == targetTag && nextDamageInstance < Time.time) // this way you'll not die immediatley
         {
             TakeDamage(1);
             nextDamageInstance = Time.time + contactDamageRate;
         }
     }
 
-    public virtual void TakeDamage(int bigHurt)
+    public virtual void TakeDamage(int bigHurt) // I don't claim to be the smartest
     {
-        if (!invincible)
+        if (!invincible) // haxermode
         {
-            health -= bigHurt;
+            health -= bigHurt; // bigHurt = damage from the enemy projectile
             if (health <= 0)
             {
-                if (targetTag == "PlayerProjectile")
+                if (enemy)
                 {
-                    GameObject gc = GameObject.FindGameObjectWithTag("GameController");
+                    GameObject gc = GameObject.FindGameObjectWithTag("GameController"); // why didn't I just create this in the beginning? I use it so much.
                     if (gc != null)
                     {
                         Score score = gc.GetComponent<Score>();
                         score.AddScore(scoreOnDeath);
                     }
                 }
-                Death();
+                Death(); // can you spot the code that should've been in death?
             }
             else
             {
@@ -149,11 +149,11 @@ public class Health : MonoBehaviour
                     AudioPain.Play(0);
             }
 
-            if (targetTag == "Enemy")
+            if (!enemy) // player
             {
                 GameObject gc = GameObject.FindGameObjectWithTag("GameController");
                 HealthBar healthBar = gc.GetComponent<HealthBar>();
-                healthBar.HealthBarCalc(bigHurt, false);
+                healthBar.HealthBarCalc(bigHurt, false); // the false tells it im not a boss :(
             }
             else if (boss)
             {
@@ -164,7 +164,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    IEnumerator ColorChange()
+    IEnumerator ColorChange() // makes the object flash red
     {
         Color fade = hurtColor;
         while (fade.g < 255)
@@ -184,7 +184,7 @@ public class Health : MonoBehaviour
 
     protected void Death()
     {
-        if (targetTag == "Enemy") // is player
+        if (!enemy) // is player
         {
             GameObject gc = GameObject.FindGameObjectWithTag("GameController");
             Pause dead = gc.GetComponent<Pause>();
@@ -194,30 +194,30 @@ public class Health : MonoBehaviour
         if (deathClip != null)
         {
             AudioDeath.Play(0);
-            spriteR.enabled = false;
+            spriteR.enabled = false; // simulate death (i dont want to destory the object before playing sound)
             if (gameObject.GetComponent<EnemyShoot>() != null)
-                gameObject.GetComponent<EnemyShoot>().stopShooting = true;
+                gameObject.GetComponent<EnemyShoot>().stopShooting = true; // disables the phantom bullets
             if (drop != null)
-                Instantiate(drop, transform.position, Quaternion.identity);
+                Instantiate(drop, transform.position, Quaternion.identity); // look at all this wasted potential. I have a total of 1 enemy that drops an item after death
 
-            if (animeDeath != null)
+            if (animeDeath != null) // if death animation doesnt equal null
             {
                 Instantiate(animeDeath, transform.position, Quaternion.identity);
             }
             transform.position = new Vector2(transform.position.x, transform.position.y + 10);
-            if (targetTag != "Enemy")
-                Destroy(gameObject, AudioDeath.clip.length);
+            if (enemy)
+                Destroy(gameObject, AudioDeath.clip.length); // kills object after some time
         }
         else
         {
-            if (targetTag != "Enemy")
+            if (enemy)
                 Destroy(gameObject);
         }
 
-        invincible = true;
+        invincible = true; // now it wont flash red to ruin the illusion of it actually dying.
     }
 
-    private AudioSource AddAudio(AudioClip clip, bool loop, bool playOnAwake, float volume)
+    private AudioSource AddAudio(AudioClip clip, bool loop, bool playOnAwake, float volume) // this isn't mine
     {
         var newAudio = gameObject.AddComponent<AudioSource>();
         newAudio.clip = clip;

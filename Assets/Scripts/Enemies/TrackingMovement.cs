@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackingMovement : EnemyBase
+public class TrackingMovement : EnemyBase // this code havn't been used and I just wrote it for fun
 {
     private GameObject Player;
     private Vector3 target;

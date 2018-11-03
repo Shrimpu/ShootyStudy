@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PenguShoot : EnemyShoot
+public class PenguShoot : EnemyShoot // wow, im using EnemyShoot. very advanced.
 {
     private bool toggle;
 
-    protected override void ShootingTime()
+    protected override void ShootingTime() // toggles between 2 different attacks
     {
         if (toggle)
         {

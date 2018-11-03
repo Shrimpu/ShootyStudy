@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Activate : MonoBehaviour
+public class Activate : MonoBehaviour // turns on a dormant sprite
 {
     private SpriteRenderer sprite;
 
