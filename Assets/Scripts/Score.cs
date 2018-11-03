@@ -15,6 +15,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         rawScore = 0;
+        SetScoreText();
     }
 
     public void AddScore(int add)
@@ -27,7 +28,7 @@ public class Score : MonoBehaviour
 
     void SetScoreText() // score means NOTHING in my game
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score: " + score.ToString("000000");
         finalScore.text = "You have won!!!\nYour final score is:\nScore: " + score.ToString();
     }
 }

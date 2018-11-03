@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 1
-  despawnTime: 3.55
+  despawnTime: 1.5
   targetTag: Player
   left: 0
   up: 1

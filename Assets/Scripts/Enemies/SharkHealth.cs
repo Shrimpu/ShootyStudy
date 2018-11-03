@@ -45,7 +45,7 @@ public class SharkHealth : Health
 
     private void RedScreen()
     {
-        redScreenAlpha.a += 0.4f / maxHealth;
+        redScreenAlpha.a += 100f / maxHealth / 255f;
         screenRenderer.color = redScreenAlpha;
     }
 
