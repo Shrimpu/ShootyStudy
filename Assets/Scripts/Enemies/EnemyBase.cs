@@ -8,7 +8,7 @@ public class EnemyBase : MonoBehaviour
     [Range(0f,0.2f)]
     public float speed;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
 	private void Start () 
     {

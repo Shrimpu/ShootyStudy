@@ -190,6 +190,7 @@ MonoBehaviour:
   - {fileID: 4148839800470112}
   - {fileID: 4619962547977592}
   - {fileID: 4600204806965980}
+  stopShooting: 0
 --- !u!114 &114613524874545500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashesRed: 1
-  drop: {fileID: 1620824298961862, guid: e7663485da88afe4299499cbcaf6d2e4, type: 2}
+  drop:
+  - {fileID: 1620824298961862, guid: e7663485da88afe4299499cbcaf6d2e4, type: 2}
+  hasDrop: 1
   inPain: {fileID: 8300000, guid: d4df67023a362cd47b50c67bdfb305d1, type: 3}
   deathClip: {fileID: 8300000, guid: 73b0ca570e34cb5418d59fafdce292af, type: 3}
   animeDeath: {fileID: 1491083312302228, guid: 6623f2a7d8eafe948ae838d49df6a9b3, type: 2}
@@ -224,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.015
+  rb: {fileID: 0}
   frequency: 0.5
 --- !u!212 &212185023457921504
 SpriteRenderer:

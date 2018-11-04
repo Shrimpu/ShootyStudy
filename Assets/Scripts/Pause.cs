@@ -61,12 +61,12 @@ public class Pause : MonoBehaviour // this is a menu and I somehow made this ret
         }
 
         if (gameOver)
-            diedText.text = "You Died";
+            diedText.text = "Game Over\nScore: " + GetComponent<Score>().score.ToString("0000000");
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("Level1"); // level1, how ambitious
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         Time.timeScale = 1;
         Cursor.visible = true;
     }
@@ -74,6 +74,27 @@ public class Pause : MonoBehaviour // this is a menu and I somehow made this ret
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+        Cursor.visible = true;
+    }
+
+    public void LoadLvl1()
+    {
+        SceneManager.LoadScene("Level1");
+        Time.timeScale = 1;
+        Cursor.visible = true;
+    }
+
+    public void LoadArcade()
+    {
+        SceneManager.LoadScene("Arcade");
+        Time.timeScale = 1;
+        Cursor.visible = true;
     }
 
     public void Easy()

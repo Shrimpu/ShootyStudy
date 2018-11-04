@@ -15,6 +15,6 @@ public class Scroll : MonoBehaviour
 	
 	void Update ()
     {
-        mat.mainTextureOffset = new Vector3(Time.time * scrollSpeed, 0);
+        mat.mainTextureOffset = new Vector3(Time.realtimeSinceStartup * scrollSpeed, 0);
 	}
 }

@@ -7,9 +7,10 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
     private SpriteRenderer spriteR; // these variables are just everywhere. you can't find anything in this code withouth ctrl + f
     Color hurtColor = new Color(255, 0, 0);
     private float colorOverwriteTime = 0.1f;
-    private Coroutine hurt;
+    public Coroutine hurt;
     public bool flashesRed = true;
-    public GameObject drop;
+    public GameObject[] drop;
+    public bool hasDrop;
 
     public AudioClip inPain;
     public AudioClip deathClip; // i made this sound by crushing an egg in my hand.
@@ -142,7 +143,7 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
                 {
                     if (hurt != null)
                         StopCoroutine(hurt);
-                    hurt = StartCoroutine(ColorChange());
+                    hurt = StartCoroutine(ColorChange(hurtColor));
                 }
 
                 if (AudioPain != null)
@@ -164,10 +165,9 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
         }
     }
 
-    IEnumerator ColorChange() // makes the object flash red
+    public IEnumerator ColorChange(Color fade) // makes the object flash red
     {
-        Color fade = hurtColor;
-        while (fade.g < 255)
+        while (fade != Color.white)
         {
             fade.g += Time.deltaTime / colorOverwriteTime;
 
@@ -197,9 +197,13 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
             spriteR.enabled = false; // simulate death (i dont want to destory the object before playing sound)
             if (gameObject.GetComponent<EnemyShoot>() != null)
                 gameObject.GetComponent<EnemyShoot>().stopShooting = true; // disables the phantom bullets
-            if (drop != null)
-                Instantiate(drop, transform.position, Quaternion.identity); // look at all this wasted potential. I have a total of 1 enemy that drops an item after death
-
+            if (hasDrop) // if (drop[0] != null) didn't work to well so fuck it
+            {
+                for (int i = 0; i < drop.Length; i++)
+                {
+                    Instantiate(drop[i], transform.position, Quaternion.identity); // look at all this wasted potential. I have a total of 1 enemy that drops an item after death
+                }
+            }
             if (animeDeath != null) // if death animation doesnt equal null
             {
                 Instantiate(animeDeath, transform.position, Quaternion.identity);
