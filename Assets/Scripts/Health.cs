@@ -6,6 +6,7 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
 {
     private SpriteRenderer spriteR; // these variables are just everywhere. you can't find anything in this code withouth ctrl + f
     Color hurtColor = new Color(255, 0, 0);
+    Color normie;
     private float colorOverwriteTime = 0.1f;
     public Coroutine hurt;
     public bool flashesRed = true;
@@ -98,6 +99,7 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
         }
 
         spriteR = GetComponent<SpriteRenderer>();
+        normie = spriteR.color;
         AudioPain = AddAudio(inPain, false, false, 0.1f); // this code is most definetly not ripped from somewhere else.
         AudioDeath = AddAudio(deathClip, false, false, 1f);
     }
@@ -167,14 +169,16 @@ public class Health : MonoBehaviour // stay clear of this one if you wish to avo
 
     public IEnumerator ColorChange(Color fade) // makes the object flash red
     {
-        while (fade != Color.white)
+        while (fade != normie)
         {
             fade.g += Time.deltaTime / colorOverwriteTime;
+            fade.b += Time.deltaTime / colorOverwriteTime;
 
-            if (fade.g >= 255f)
-                fade.g = 255f;
+            if (fade.g > normie.g)
+                fade.g = normie.g;
+            if (fade.b > normie.b)
+                fade.b = normie.b;
 
-            fade.b = fade.g;
             spriteR.color = fade;
 
             yield return null;

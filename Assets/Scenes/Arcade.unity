@@ -295,6 +295,8 @@ MonoBehaviour:
   - {fileID: 1394311298213448, guid: 0dfb8cf82c647cc4889abe6e6cac07bc, type: 2}
   - {fileID: 1298601257777796, guid: f9df0e946b15699459315a4f3e691fc6, type: 2}
   - {fileID: 1668031452429410, guid: 669f0689de8704f448b045f6f1de3a78, type: 2}
+  - {fileID: 1457686812350270, guid: 64421c2990434ff4cb821588b61f27c8, type: 2}
+  - {fileID: 1116500854205122, guid: 0bc7fb4a162dbda43ac5d40745f5b2b4, type: 2}
   GameController: {fileID: 337642660}
 --- !u!1 &108219146
 GameObject:

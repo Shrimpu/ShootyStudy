@@ -5,11 +5,12 @@ using UnityEngine;
 public class ArcadeEnemySpwnr : MonoBehaviour
 {
     public GameObject[] EnemyList;
+    [Header("GameController")]
     public GameObject GameController;
     private Score score;
     private Vector2 spawnPoint;
 
-    private float spawnrate = 4;
+    private float spawnrate = 3.5f;
     private float nextSpawn;
     private int difficulty = 2000;
     private bool doOnce;
@@ -44,9 +45,9 @@ public class ArcadeEnemySpwnr : MonoBehaviour
 
         if (score.score >= difficulty)
         {
-            if (spawnrate > 0.90f)
+            if (spawnrate > 1.1f)
             {
-                spawnrate -= 0.3f;
+                spawnrate -= 0.5f;
                 difficulty += 3000;
                 score.SetDangerText(false);
             }
@@ -54,7 +55,7 @@ public class ArcadeEnemySpwnr : MonoBehaviour
             {
                 if (!doOnce)
                 {
-                    spawnrate = 0.90f;
+                    spawnrate = 1.1f;
                     score.SetDangerText(true);
                     doOnce = true;
                 }

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139173c995a419c4e9e49c75bc5e086e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.015
+  speed: 0.03
   rb: {fileID: 0}
 --- !u!114 &114923211401968126
 MonoBehaviour:
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashesRed: 1
   drop: []
+  hasDrop: 0
   inPain: {fileID: 8300000, guid: d4df67023a362cd47b50c67bdfb305d1, type: 3}
   deathClip: {fileID: 8300000, guid: 73b0ca570e34cb5418d59fafdce292af, type: 3}
   animeDeath: {fileID: 1491083312302228, guid: 6623f2a7d8eafe948ae838d49df6a9b3, type: 2}
