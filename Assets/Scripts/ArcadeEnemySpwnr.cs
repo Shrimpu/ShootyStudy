@@ -45,7 +45,7 @@ public class ArcadeEnemySpwnr : MonoBehaviour
 
         if (score.score >= difficulty)
         {
-            if (spawnrate > 1.1f)
+            if (spawnrate > 0.95f)
             {
                 spawnrate -= 0.5f;
                 difficulty += 3000;
@@ -55,7 +55,7 @@ public class ArcadeEnemySpwnr : MonoBehaviour
             {
                 if (!doOnce)
                 {
-                    spawnrate = 1.1f;
+                    spawnrate = 0.95f;
                     score.SetDangerText(true);
                     doOnce = true;
                 }
