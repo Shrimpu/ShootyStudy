@@ -332,6 +332,41 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1513120876}
+    - target: {fileID: 224079063458422156, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 224079063458422156, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 114029451090046324, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114029451090046324, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114029451090046324, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_Text
+      value: QUIT GAME
+      objectReference: {fileID: 0}
+    - target: {fileID: 224079063458422156, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114257151693686522, guid: 3fade85d4c428f74386888ece8de70ed,
+        type: 2}
+      propertyPath: m_Text
+      value: QUIT GAME
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fade85d4c428f74386888ece8de70ed, type: 2}
   m_IsPrefabAsset: 0
