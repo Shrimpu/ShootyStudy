@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50007637773022078}
   - component: {fileID: 58480389701511038}
   - component: {fileID: 114145318504442678}
+  - component: {fileID: 70662108677393260}
   m_Layer: 8
   m_Name: Bullit Oliver
   m_TagString: EnemyProjectile
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126629747760908}
   m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
-  m_LocalPosition: {x: 4.69, y: -1.03, z: 0}
+  m_LocalPosition: {x: -7.3774304, y: -3.310692, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +70,7 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126629747760908}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -78,6 +79,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.77
+--- !u!70 &70662108677393260
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126629747760908}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.18460007, y: 0.06417678}
+  m_Size: {x: 2.3346057, y: 1.3665007}
+  m_Direction: 1
 --- !u!114 &114145318504442678
 MonoBehaviour:
   m_ObjectHideFlags: 1

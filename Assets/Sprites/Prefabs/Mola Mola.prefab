@@ -212,13 +212,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daba94ab93abaa04a813fe464c6b24ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drop: {fileID: 0}
+  flashesRed: 1
+  drop:
+  - {fileID: 0}
+  hasDrop: 0
   inPain: {fileID: 8300000, guid: d4df67023a362cd47b50c67bdfb305d1, type: 3}
   deathClip: {fileID: 0}
   animeDeath: {fileID: 1491083312302228, guid: 6623f2a7d8eafe948ae838d49df6a9b3, type: 2}
   health: 10
   invincible: 0
   enemy: 0
+  boss: 0
   contactDamageRate: 0.5
   scoreOnDeath: 0
 --- !u!114 &114793020202110000

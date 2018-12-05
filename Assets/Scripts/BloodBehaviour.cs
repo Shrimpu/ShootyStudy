@@ -22,7 +22,7 @@ public class BloodBehaviour : MonoBehaviour
         GameObject shark = GameObject.Find("Shark"); // its called shark when I shove it on screen manually
         if (shark == null)
             shark = GameObject.Find("Shark(Clone)"); // this is what its called when its spawned by my EnemySpawner
-        if (shark.GetComponent<SharkMovement>().enraged == true)
+        if (shark != null && shark.GetComponent<SharkMovement>().enraged == true)
         {
             active = true;
             player = GameObject.Find("Mola Mola");

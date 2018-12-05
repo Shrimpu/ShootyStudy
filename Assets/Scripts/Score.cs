@@ -18,6 +18,7 @@ public class Score : MonoBehaviour
     {
         rawScore = 0;
         SetScoreText();
+        danger = 1;
     }
 
     public void AddScore(int add)

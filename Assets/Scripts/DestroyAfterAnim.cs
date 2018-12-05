@@ -13,6 +13,6 @@ public class DestroyAfterAnim : MonoBehaviour
             gameObject.AddComponent<AudioSource>().clip = sound;
             gameObject.GetComponent<AudioSource>().Play(0);
         }
-        Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 }
