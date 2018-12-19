@@ -12,7 +12,7 @@ public class ArcadeEnemySpwnr : MonoBehaviour
 
     private float spawnrate = 3.5f;
     private float nextSpawn;
-    private int difficulty = 2000;
+    private int difficulty = 1000; // when score passes 1000, turn up difficulty
     private bool doOnce;
 
     private float random;
@@ -37,18 +37,18 @@ public class ArcadeEnemySpwnr : MonoBehaviour
             random = Random.Range(randRange1, randRange2);
             spawnPoint = new Vector2(transform.position.x, random);
 
-            if (score.score < 5000)
+            if (score.score < 5000) // spawns enemies based on score
                 Instantiate(EnemyList[Random.Range(0, 4)], spawnPoint, Quaternion.identity);
             else
-                Instantiate(EnemyList[Random.Range(0, EnemyList.Length)], spawnPoint, Quaternion.identity);
+                Instantiate(EnemyList[Random.Range(0, EnemyList.Length)], spawnPoint, Quaternion.identity); // this allows all enemies to sapwn including the fire fish oliver drew that has the most annoying mechanic ever.
         }
 
-        if (score.score >= difficulty)
+        if (score.score >= difficulty) // all of this should be a function
         {
             if (spawnrate > 0.95f)
             {
                 spawnrate -= 0.5f;
-                difficulty += 3000;
+                difficulty += 1000;
                 score.SetDangerText(false);
             }
             else
